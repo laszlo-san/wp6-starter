@@ -1,0 +1,43 @@
+version: '3.2'
+
+services:
+  
+  db:
+    build: ./docker/sql
+    restart: unless-stopped
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_pass
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user_pass
+      - MYSQL_DATABASE=wp6-starter
+
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - 80:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: user
+      WORDPRESS_DB_PASSWORD: user_pass
+      WORDPRESS_DB_NAME: wp6-starter
+    volumes:
+      - wordpress:/var/www/html
+      - ./wordpress/plugins/:/var/www/html/wp-content/plugins/
+      - ./wordpress/themes/:/var/www/html/wp-content/themes/
+      - ./wordpress/mu-plugins/:/var/www/html/wp-content/mu-plugins/
+
+  adminer:
+    image: adminer:latest
+    restart: always
+    ports:
+      - 8888:80
+    environment:
+      - ADMINER_DESIGN=dracula
+      - ADMINER_DEFAULT_SERVER=db
+
+volumes:
+  wordpress:
+  db:

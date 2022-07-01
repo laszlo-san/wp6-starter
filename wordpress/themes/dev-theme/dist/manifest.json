@@ -1,0 +1,18 @@
+{
+  "main.js": {
+    "file": "assets/main.dce23a23.js",
+    "src": "main.js",
+    "isEntry": true,
+    "css": [
+      "assets/main.4dc00350.css"
+    ]
+  },
+  "sections/testSection/index.js": {
+    "file": "assets/test.b49d199a.js",
+    "src": "sections/testSection/index.js",
+    "isEntry": true,
+    "css": [
+      "assets/test.dbd6cdd2.css"
+    ]
+  }
+}
