@@ -1,0 +1,3 @@
+node_modules
+wordpress/themes
+!wordpress/themes/dev-theme
